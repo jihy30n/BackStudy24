@@ -10,7 +10,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PostEntity extends BaseEntity{
+
 
     @Column(nullable = false)
     private String title;
@@ -20,12 +23,6 @@ public class PostEntity extends BaseEntity{
 
     @Column(nullable = false)
     private String userName;
-
-    public PostEntity(String title, String content, String userName) {
-        this.title = title;
-        this.content = content;
-        this.userName = userName;
-    }
 
     public void updatePost(String title, String content) {
         this.title = title;

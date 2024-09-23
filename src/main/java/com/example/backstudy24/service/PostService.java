@@ -45,11 +45,11 @@ public class PostService {
 
     @Transactional
     public void createPost(CreatePostRequestDto requestDto) {
-        PostEntity post = new PostEntity(
-                requestDto.getPostTitle(),
-                requestDto.getPostContent(),
-                requestDto.getUserName()
-        );
+        PostEntity post = PostEntity.builder()
+                .title(requestDto.getPostTitle())
+                .content(requestDto.getPostContent())
+                .userName(requestDto.getUserName())
+                .build();
         postRepository.save(post);
     }
 
