@@ -2,9 +2,9 @@ package com.example.backstudy24.dto.response.post;
 
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @Builder
 public class PostResponseDto {
 
