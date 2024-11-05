@@ -22,13 +22,16 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<>();
 
-        switch (user.getUserRole()) {
-            case ADMIN : authorityList.add(getAuthorities(ADMIN));
-            case USER : authorityList.add(getAuthorities(USER));
+        if (user.getUserRole() == ADMIN) {
+            authorityList.add(getAuthorities(ADMIN));
+        }
+        if (user.getUserRole() == USER) {
+            authorityList.add(getAuthorities(USER));
         }
 
         return authorityList;
     }
+
 
     private GrantedAuthority getAuthorities(UserRole userRole) {
         return new SimpleGrantedAuthority("ROLE_" + userRole);
@@ -40,9 +43,10 @@ public class CustomUserDetails implements UserDetails {
         return user.getPassword();
     }
 
+    //식별자
     @Override
     public String getUsername() {
-        return user.getName();
+        return user.getEmail();
     }
 
     @Override

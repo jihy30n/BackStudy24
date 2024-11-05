@@ -72,15 +72,16 @@ public class JwtTokenProvider {
 
     public String createRefreshToken(Long id, UserRole role) {
         try {
-            return this.createToken(id, refreshTokenValidTime, "refresh");
+            return this.createToken(id, role, refreshTokenValidTime, "refresh");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String createToken(Long id, long tokenValid, String tokenType) {
+    public String createToken(Long id, UserRole role, long tokenValid, String tokenType) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", id); // claims
+        jsonObject.addProperty("role", role.ordinal());
         jsonObject.addProperty("tokenType", tokenType);
 
         Claims claims = Jwts.claims().subject(encrypt(jsonObject.toString())).build();
