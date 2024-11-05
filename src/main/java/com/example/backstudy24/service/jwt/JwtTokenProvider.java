@@ -64,7 +64,7 @@ public class JwtTokenProvider {
 
     public String createAccessToken(Long id, UserRole role) {
         try {
-            return this.createToken(id, accessTokenValidTime, "access");
+            return this.createToken(id, role, accessTokenValidTime, "access");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
