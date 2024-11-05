@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PostEntity extends BaseEntity{
 
-
     @Column(nullable = false)
     private String title;
 
@@ -28,6 +27,5 @@ public class PostEntity extends BaseEntity{
         this.title = title;
         this.content = content;
     }
-
 
 }
